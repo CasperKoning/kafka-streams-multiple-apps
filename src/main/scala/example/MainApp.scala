@@ -10,8 +10,8 @@ object MainApp extends App {
   
   val producer = ProducerSubApp(topic = topic)
 
-  val stream1 = StreamsSubApp(seed = "1337", topic = topic)
-  val stream2 = StreamsSubApp(seed = "9001", topic = topic)
+  val stream1 = StreamsSubApp(seed = "1337", applicationId = "my-application", groupId = "my-group-1", topic = topic)
+  val stream2 = StreamsSubApp(seed = "9001", applicationId = "my-application", groupId = "my-group-2", topic = topic)
 
   Runtime.getRuntime().addShutdownHook(new Thread(() => producer.close()))
   Runtime.getRuntime().addShutdownHook(new Thread(() => stream1.close()))
